@@ -284,7 +284,7 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
 
 And other [threading.Thread](https://docs.python.org/3/library/threading.html) public pethods are available.<br><br>
 
-## Classess
+## Classes
 ### voiceGenerator
 -  voiceGenerator class has hollowing method.
     | name | description | default |
