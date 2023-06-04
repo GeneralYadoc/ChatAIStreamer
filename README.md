@@ -289,7 +289,7 @@ And other [threading.Thread](https://docs.python.org/3/library/threading.html) p
 -  voiceGenerator class has hollowing method.
     | name | description | default |
     |------|------------|---------|
-    | generate | virtual method to generate voice. String of text is given. Modified text and generated voice shoud be returended by this method. The type of modified text shoud be string. No restriction exist for voice type. | - |
+    | generate | virtual method to generate voice. String of text is given. Modified text and generated voice shoud be returended by this method. The type of modified text shoud be string. No restriction exists for voice type. | - |
 
 ## Callbacks
 ### get_item_cb
