@@ -12,7 +12,7 @@ def _requires_from_file(filename):
 
 setup(
     name="chatai-streamer",
-    version="0.0.1",
+    version="0.0.2",
     license="MIT",
     description="ChatGPT answer aloud YouTube chat messages.",
     author="General Yadoc",
