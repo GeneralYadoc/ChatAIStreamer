@@ -301,6 +301,7 @@ And other [threading.Thread](https://docs.python.org/3/library/threading.html) p
 - pre putting queue filter.
 - YouTube chat item is thrown as an argument.
 - You can edit YouTube chat items before putting internal queue.
+- <b>If you want to get Complete items from YouTube, please implement this callback, since emoticons in a message and messages consisted by emoticons only are already removed from the items gotten in get_item_cb.</b> 
 - It's required that edited chat item is returned.
 - You can avoid putting internal queue by returning None.
 ### post_filter_cb

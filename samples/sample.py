@@ -34,6 +34,8 @@ def answer_cb(user_message, completion, voice):
   message = completion.choices[0]["message"]["content"]
 
   # Play the voice by VoicePlayer of GttsAIStreamer
+  # If you use Python launcher named py, please create proper player as follows.
+  # player = gasr.VoicePlayer(voice, python_command="py")
   player = gasr.VoicePlayer(voice)
   player.start()
 
