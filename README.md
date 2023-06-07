@@ -72,13 +72,18 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
     system_role = "You are a cheerful assistant who speek English and can get conversation exciting with user."
   )
 
+  # Set params of streamer
+  streamer_params=casr.streamerParams(
+    voice_generator=myVoiceGenerator(),
+    answer_with_voice_cb=answer_with_voice_cb
+  )
+
   # Create ChatAIStreamer instance.
   ai_streamer =casr.ChatAIStreamer(
     casr.params(
       stream_params=stream_params,
       ai_params=ai_params,
-      voice_generator=myVoiceGenerator(),
-      answer_with_voice_cb=answer_with_voice_cb
+      streamer_params=streamer_params
     )
   )
 
@@ -177,7 +182,10 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
   # You can choose other language by its 'lang=' argument like 'ja'.
   # If you want to change language, Please change the assignment for system role of ai params also.
   # The instance isn't necessary for English generator.
-  voice_generator=gasr.GttsGenerator(lang='en')
+  streamer_params=gasr.streamerParams(
+    voice_generator=gasr.GttsGenerator(lang='en'),
+    answer_with_voice_cb=answer_with_voice_cb
+  )
 
   # Create GttsAIStreamer instance.
   # 'voice_generator=' is omittable for English generator.
@@ -185,8 +193,7 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
     gasr.params(
       stream_params=stream_params,
       ai_params=ai_params,
-      voice_generator=voice_generator,
-      answer_with_voice_cb=answer_with_voice_cb
+      streamer_params=streamer_params
     )
   )
 
@@ -257,16 +264,17 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
     | ask_cb | user message given to ChatGPT is thrown to this callback | None |
     | max_messages_in_context | Max messages in context given to ChatGPT | 20 |
     | answer_cb | ChatGPT answer is thrown to this callback  | None |
-    | answer_with_voice_cb | ChatGPT answer is thrown to this callback with voice data created by your get method of voiceGenerator  | None |
     | max_queue_size | Max slots of internal queue (0 is no limit) | 10 |
     | model | Model of AI to be used. | None |
     | max_tokens_per_request | Max number of tokens which can be contained in a request | 256 |
     | interval_sec | Interval of ChatGPT API call | 20.0 \[sec\] |
 
-  ### voiceGenerator
+  ### streamerParams
     | name | description | default |
     |------|------------|---------|
-    | voice_generator | the instance of inherited class of voiceGenerater made by you | - |
+    | voice_generator | the instance of inherited class of voiceGenerater made by you | None |
+    | answer_with_voice_cb | ChatGPT answer is thrown to this callback with voice data created by your get method of voiceGenerator  | None |
+    | max_queue_size | max size of internal queue which stocks GPT answer which will be given to voice Generator | 1 |
  
 ### Notice
 - Please refer [pytchat README](https://github.com/taizan-hokuto/pytchat) to know the type of YouTube Chat item used by get_item_cb, pre_filter_cb and post filter_cb.

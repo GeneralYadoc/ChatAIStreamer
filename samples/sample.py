@@ -66,7 +66,10 @@ ai_params=gasr.aiParams(
 # You can choose other language by its 'lang=' argument like 'ja'.
 # If you want to change language, Please change the assignment for system role of ai params also.
 # The instance isn't necessary for English generator.
-voice_generator=gasr.GttsGenerator(lang='en')
+streamer_params=gasr.streamerParams(
+  voice_generator=gasr.GttsGenerator(lang='en'),
+  answer_with_voice_cb=answer_with_voice_cb
+)
 
 # Create GttsAIStreamer instance.
 # 'voice_generator=' is omittable for English generator.
@@ -74,8 +77,7 @@ ai_streamer =gasr.GttsAIStreamer(
   gasr.params(
     stream_params=stream_params,
     ai_params=ai_params,
-    voice_generator=voice_generator,
-    answer_with_voice_cb=answer_with_voice_cb
+    streamer_params=streamer_params
   )
 )
 

@@ -10,15 +10,22 @@ streamParams = cas.streamParams
 userMessage = cas.userMessage
 aiParams = cas.aiParams
 
+
 class voiceGenerator(ABC):
   @abstractmethod
   def generate(self, text):
     pass
 
 @dataclass
-class params(cas.params):
+class streamerParams():
   voice_generator : voiceGenerator = None
   answer_with_voice_cb: Callable[[userMessage, any, any], None] = None
+  max_queue_size : int = 1
+
+
+@dataclass
+class params(cas.params):
+  streamer_params : streamerParams = streamerParams()
 
 @dataclass
 class answerSlot():
@@ -48,13 +55,13 @@ class ChatAIStreamer(cas.ChatAIStream):
 
   def __init__(self, params):
     self.__keeping_connection = False
-    self.voice_generator = params.voice_generator
+    self.voice_generator = params.streamer_params.voice_generator
     self.__answer_queue = None
     self.__answer_thread = None
     if (self.voice_generator):
-      self.__answer_queue = queue.Queue(5)
+      self.__answer_queue = queue.Queue(params.streamer_params.max_queue_size)
       self.__answer_thread = threading.Thread(target=self.__generateVoice, daemon=True)
-    self.answer_with_voice_cb = params.answer_with_voice_cb
+    self.answer_with_voice_cb = params.streamer_params.answer_with_voice_cb
 
     self.answer_cb = params.ai_params.answer_cb
     params.ai_params.answer_cb = self.my_answer_cb
