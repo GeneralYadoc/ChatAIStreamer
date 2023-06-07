@@ -1,4 +1,4 @@
-chatai-stream==0.0.2
+chatai-stream==0.0.3
 gTTS==2.3.2
 deep-translator==1.11.1
 pydub==0.25.1

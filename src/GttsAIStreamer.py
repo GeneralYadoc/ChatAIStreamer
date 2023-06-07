@@ -16,6 +16,7 @@ import ChatAIStreamer as casr
 
 ChatAIStreamer = casr.ChatAIStreamer
 streamParams = casr.streamParams
+userMessage = casr.userMessage
 aiParams = casr.aiParams
 
 TMPFILE_POSTFIX = "_GttsAIStreamer"
