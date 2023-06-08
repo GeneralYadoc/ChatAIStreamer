@@ -241,7 +241,7 @@ Extention of [ChatAIStream](https://github.com/GeneralYadoc/ChatAIStream) for vo
   The outputs of the voices and the right window are provided by this sample.<br>
   Left outputs are also available by ChatAIStreamer.
   
-  [![GttsAIStreamer sample](ReadMeParts/ChatAIStreamer.png)](https://www.youtube.com/embed/sesl9VZHDA8)
+  [![GttsAIStreamer sample](ReadMeParts/ChatAIStreamer.png)](https://www.youtube.com/embed/k_7Ona9JuBo)
 
 ## Arguments of Constructor
 - ChatAIStreamer object can be configured with following params given to constructor.
