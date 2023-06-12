@@ -49,6 +49,9 @@ class ChatAIStreamer(cas.ChatAIStream):
       self.answer_cb(user_message, completion)
     if self.voice_generator:
       while self.__keeping_connection and self.__answer_queue.full():
+        if self.full_messages_for_ask():
+          self.__answer_queue.get_nowait()
+          break
         time.sleep(0.01)
       if self.__keeping_connection:
         self.__answer_queue.put(answerSlot(user_message=user_message, completion=completion))
