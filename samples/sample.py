@@ -16,12 +16,12 @@ def print_incremental(st, interval_sec):
 
 # Customized sleep for making available of running flag interruption.
 def interruptible_sleep(time_sec):
-  counter = math.floor(time_sec / 0.01)
-  frac = time_sec - (counter * 0.01)
+  counter = math.floor(time_sec / 0.10)
+  frac = time_sec - (counter * 0.10)
   for i in range(counter):
     if not running:
       break
-    time.sleep(0.01)
+    time.sleep(0.10)
   if not running:
     return
   time.sleep(frac)
